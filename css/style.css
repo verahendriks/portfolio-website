@@ -1,0 +1,658 @@
+/* =========================================
+   1. CSS VARIABELEN & BASIS CONFIGURATIE
+========================================= */
+:root {
+    /* Kleurenpalet */
+    --color-primary-bg: #b2c7d5;
+    --color-white: #ffffff;
+    --color-light-blue: #e3f1f9;
+    --color-dark-main: #111111;
+    --color-dark-sub: #2d3338;
+    --color-text-muted: #888888;
+    --color-modal-bg: rgba(0, 0, 0, 0.9);
+    --color-modal-text: #cccccc;
+    
+    /* Typografie */
+    --font-main: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    
+    --font-size-h1: 2.5em;
+    --font-size-h1-sub: 2.8em;
+    --font-size-h3: 1.1em;
+    --font-size-body: 1em;
+    --font-size-menu: 1em;
+    --font-size-subtext: 1.2em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-white);
+    color: var(--color-dark-main);
+    line-height: 1.6;
+    font-size: var(--font-size-body);
+}
+
+body.subpage-body {
+    background-color: var(--color-primary-bg) !important;
+}
+
+/* =========================================
+   2. LAYOUT, STRUCTUUR & HEADER
+========================================= */
+.top-section {
+    background-color: var(--color-primary-bg); 
+    padding-bottom: 4em;
+}
+
+.subpage-header {
+    padding-bottom: 3em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em;
+    position: relative;
+    z-index: 999; 
+}
+
+.logo {
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--color-dark-main);
+}
+
+/* =========================================
+   3. NAVIGATIE (DESKTOP & MOBIEL)
+========================================= */
+.desktop-nav {
+    margin-left: auto;
+}
+
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5em;
+}
+
+.desktop-nav a {
+    position: relative;
+    text-decoration: none;
+    color: var(--color-dark-main);
+    font-size: var(--font-size-menu);
+    font-weight: var(--font-weight-bold);
+    padding-bottom: 0.4em; 
+    transition: color 0.3s ease;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0.125em;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-dark-main);
+    transition: width 0.3s ease; 
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active-page::after {
+    width: 100%;
+}
+
+/* Mobiel Menu componenten */
+.menu-btn {
+    display: none;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-color: var(--color-dark-main);
+    border-radius: 50%;
+    position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 0.875em;
+    height: 0.1em;
+    background-color: var(--color-white);
+    left: 0.55em;
+    transition: all 0.3s ease; 
+}
+
+.hamburger::before { top: 0.75em; }
+.hamburger::after { top: 1.15em; }
+
+.menu-btn.active .hamburger::before {
+    top: 0.95em;
+    transform: rotate(45deg);
+}
+
+.menu-btn.active .hamburger::after {
+    top: 0.95em;
+    transform: rotate(-45deg);
+}
+
+.mobile-nav {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; 
+    background-color: var(--color-primary-bg); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 998; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-1.25em); 
+    transition: all 0.4s ease;
+}
+
+.mobile-nav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mobile-nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-nav li {
+    margin: 1.5em 0;
+}
+
+.mobile-nav a {
+    color: var(--color-dark-main);
+    font-size: 1.5em; 
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.04em;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.mobile-nav a:hover {
+    opacity: 0.5;
+}
+
+/* =========================================
+   4. HERO SECTIE & FILTERS
+========================================= */
+.hero {
+    padding: 1em 3em;
+}
+
+.hero h1 {
+    font-size: var(--font-size-h1);
+    max-width: 32em;
+    line-height: 1.1;
+    margin-bottom: 0.3em;
+    color: var(--color-light-blue);
+}
+
+.sub-text {
+    font-size: var(--font-size-subtext);
+    color: var(--color-dark-sub);
+    margin-bottom: 1em;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 3em;
+}
+
+.filters {
+    display: flex;
+    gap: 0.5em;
+}
+
+.filter-btn {
+    background: none;
+    border: 0.04em solid var(--color-white);
+    padding: 0.6em 1.2em;
+    border-radius: 1.25em;
+    font-size: 0.9em;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--color-dark-sub);
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--color-dark-main);
+    color: var(--color-white);
+    border-color: var(--color-dark-main);
+}
+
+/* =========================================
+   5. PORTFOLIO GRID (HOMEPAGE)
+========================================= */
+.gallery-container {
+    background: var(--color-white);
+    border-radius: 1.5em 1.5em 0 0;
+    margin-top: -1.85em;
+    padding: 4em 3em;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18.75em, 1fr));
+    gap: 3em 1.5em; 
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.grid-item.hide {
+    display: none !important;
+}
+
+.project-frame {
+    width: 100%;
+    height: 21.875em; 
+    background-color: #f7f8f9; 
+    padding: 1.25em; 
+    border-radius: 0.6em; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.9em;
+}
+
+.project-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block; 
+    transition: transform 0.4s ease;
+}
+
+.grid-item:hover .project-img,
+.photo-item:hover .project-img {
+    transform: scale(1.03); 
+}
+
+.category {
+    font-size: 0.65em;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-muted);
+    letter-spacing: 0.06em;
+}
+
+.item-info h3 {
+    font-size: var(--font-size-h3);
+    margin-top: 0.2em;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-dark-main);
+}
+
+.project-desc {
+    display: none; 
+}
+
+/* =========================================
+   6. FOTOGRAFIE MASONRY WALL (APARTE PAGINA)
+========================================= */
+.photo-masonry-container {
+    background: var(--color-white);
+    border-radius: 1.5em 1.5em 0 0;
+    margin-top: -1.85em;
+    padding: 1.4em; 
+}
+
+.photo-masonry-grid {
+    column-count: 3;
+    column-gap: 0.95em; 
+    width: 100%;
+}
+
+.photo-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.95em; 
+    break-inside: avoid; 
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.photo-item .project-img {
+    width: 100%;
+    height: auto; 
+    border-radius: 0; 
+}
+
+/* =========================================
+   7. SUBPAGINA LAY-OUTS (OVER MIJ & CONTACT)
+========================================= */
+.subpage-container {
+    background-color: var(--color-primary-bg); 
+    padding: 4em 3em;
+}
+
+.about-text h1, 
+.contact-page-layout h1 {
+    font-size: var(--font-size-h1-sub);
+    margin-bottom: 0.3em;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-light-blue); 
+}
+
+.about-text p,
+.contact-intro {
+    font-size: var(--font-size-body);
+    color: var(--color-dark-sub);
+    line-height: 1.7;
+    max-width: 38em;
+}
+
+.about-page-layout {
+    max-width: 68.75em;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4em;
+    padding: 1em 0;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 28em;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0.6em 1.8em rgba(0,0,0,0.05);
+}
+
+.about-text {
+    flex: 1.2;
+}
+
+.about-text p {
+    margin-bottom: 1.1em;
+}
+
+.contact-page-layout {
+    max-width: 40.625em;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-intro {
+    margin-bottom: 3em;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    width: 100%;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1em;
+    border: 0.06em solid var(--color-white);
+    border-radius: 0.6em;
+    font-family: inherit;
+    font-size: 0.95em;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.9); 
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-dark-main);
+    background-color: var(--white);
+}
+
+.submit-btn {
+    background-color: var(--color-dark-main);
+    color: var(--color-white);
+    border: none;
+    padding: 1em 2.5em;
+    border-radius: 1.55em;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: center;
+    margin-top: 1em;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-white);
+    color: var(--color-dark-main);
+}
+
+/* =========================================
+   8. PROJECT POP-UP / MODAL
+========================================= */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-modal-bg); 
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    width: 85%; 
+    max-width: 75em;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    gap: 4em; 
+}
+
+.modal-content img {
+    max-width: 60%; 
+    max-height: 85vh; 
+    object-fit: contain; 
+    box-shadow: 0 0.6em 2.5em rgba(0, 0, 0, 0.6); 
+}
+
+.modal-info {
+    text-align: left; 
+    max-width: 40%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-info h3 {
+    color: var(--color-white); 
+    font-size: 1.6em; 
+    margin-bottom: 0.2em;
+    line-height: 1.2;
+    font-weight: var(--font-weight-medium);
+}
+
+#modalCategory {
+    color: var(--color-text-muted); 
+    font-size: 0.8em;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5em;
+    display: block; 
+}
+
+.modal-desc {
+    font-size: 1.05em;
+    color: var(--color-modal-text); 
+    line-height: 1.7;
+}
+
+.close-btn {
+    position: fixed; 
+    top: 2em;
+    right: 3em;
+    width: 2em;  
+    height: 2em;
+    background-color: var(--color-white); 
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1002;
+}
+
+.close-btn::before,
+.close-btn::after {
+    content: '';
+    position: absolute;
+    width: 0.875em;
+    height: 0.1em;
+    background-color: var(--color-dark-main); 
+    left: 0.55em;
+    top: 0.95em; 
+    pointer-events: none; 
+}
+
+.close-btn::before { transform: rotate(45deg); }
+.close-btn::after { transform: rotate(-45deg); }
+.close-btn:hover { transform: scale(1.1); }
+
+.nav-btn {
+    position: fixed; 
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em; 
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 0.45em;
+    user-select: none; 
+    transition: color 0.3s, transform 0.3s;
+    z-index: 1002; 
+}
+
+.nav-btn:hover {
+    color: var(--color-white);
+    transform: translateY(-50%) scale(1.1); 
+}
+
+.prev-btn { left: 2%; }
+.next-btn { right: 2%; }
+
+/* =========================================
+   9. MEDIA QUERIES (RESPONSIVE)
+========================================= */
+@media (max-width: 56.25em) {
+    .photo-masonry-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 48em) {
+    .desktop-nav { display: none; }
+    .menu-btn { display: flex; }
+    
+    header, .hero { padding: 1.5em; }
+    .hero h1 { font-size: 2.2em; }
+    .filters { flex-wrap: wrap; gap: 0.5em; }
+    
+    .gallery-container {
+        padding: 2em 1.5em;
+        margin-top: -0.95em; 
+        border-radius: 0.95em 0.95em 0 0;
+    }
+    
+    .subpage-container { padding: 2em 1.5em; }
+    .about-page-layout, .contact-page-layout { flex-direction: column; text-align: center; }
+    .about-text h1, .contact-page-layout h1 { font-size: 2.2em; }
+    .submit-btn { width: 100%; }
+
+    .modal-content { flex-direction: column; gap: 1.5em; width: 90%; }
+    .modal-content img { max-height: 55vh; max-width: 100%; }
+    .modal-info { max-width: 100%; text-align: center; }
+    #modalCategory { margin-bottom: 0.5em; }
+    
+    .close-btn { 
+        top: 1.5em; 
+        right: 1.5em; 
+    }
+    
+    .nav-btn { 
+        font-size: 2em;
+        top: auto !important;
+        bottom: 1.5em;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .prev-btn { 
+        left: 20%; 
+    }
+    
+    .next-btn { 
+        right: 20%; 
+    }
+
+    .modal-content {
+        padding-bottom: 4em;
+    }
+}
+
+@media (max-width: 37.5em) {
+    .photo-masonry-grid {
+        column-count: 1;
+        column-gap: 0;
+    }
+    .photo-item {
+        margin-bottom: 0.6em;
+    }
+    .photo-masonry-container {
+        padding: 1.2em;
+    }
+}

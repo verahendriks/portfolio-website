@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA VORMGEVING | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="top-section">
+        <header>
+            <a href="index.html" class="logo">VERA VORMGEVING</a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Portfolio</a></li>
+                    <li><a href="fotografie.html">Fotografie</a></li>
+                    <li><a href="over-mij.html">Over mij</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-btn" id="menuToggle">
+                Menu <span class="hamburger"></span>
+            </div>
+        </header>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html" class="mobile-link">Portfolio</a></li>
+                <li><a href="fotografie.html" class="mobile-link">Fotografie</a></li>
+                <li><a href="over-mij.html" class="mobile-link">Over mij</a></li>
+                <li><a href="contact.html" class="mobile-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <h1>VERA VORMGEVING</h1>
+            <p class="sub-text">Creatief ontwerper & front-end developer gespecialiseerd in digital & print</p>
+            <div class="controls">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Al mijn werk</button>
+                    <button class="filter-btn" data-filter="visual-design">Visual Design</button>
+                    <button class="filter-btn" data-filter="ux-design">UX Design</button>
+                    <button class="filter-btn" data-filter="front-end">Front-end Development</button>
+                    <button class="filter-btn" data-filter="graphic-design">Grafische Vormgeving</button>
+                    <button class="filter-btn" data-filter="dtp">DTP</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <main class="gallery-container">
+        <div class="gallery-grid">
+            
+            <div class="grid-item" data-category="visual-design">
+                <div class="project-frame">
+                    <img class="project-img" src="https://picsum.photos/600/800?random=1" alt="Visual Design">
+                </div>
+                <div class="item-info">
+                    <span class="category">Visual Design</span>
+                    <h3>Project Titel</h3>
+                </div>
+                <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+
+            <div class="grid-item" data-category="ux-design">
+                <div class="project-frame">
+                    <img class="project-img" src="https://picsum.photos/600/800?random=2" alt="UX Design">
+                </div>
+                <div class="item-info">
+                    <span class="category">UX Design</span>
+                    <h3>Project Titel</h3>
+                </div>
+                <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+
+            <div class="grid-item" data-category="front-end">
+                <div class="project-frame">
+                    <img class="project-img" src="https://picsum.photos/800/600?random=3" alt="Front-end">
+                </div>
+                <div class="item-info">
+                    <span class="category">Front-end Development</span>
+                    <h3>Project Titel</h3>
+                </div>
+                <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+
+            <div class="grid-item" data-category="graphic-design">
+                <div class="project-frame">
+                    <img class="project-img" src="https://picsum.photos/600/800?random=5" alt="Graphic Design">
+                </div>
+                <div class="item-info">
+                    <span class="category">Grafische vormgeving</span>
+                    <h3>Project Titel</h3>
+                </div>
+                <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+
+            <div class="grid-item" data-category="dtp">
+                <div class="project-frame">
+                    <img class="project-img" src="https://picsum.photos/600/800?random=6" alt="DTP">
+                </div>
+                <div class="item-info">
+                    <span class="category">DTP</span>
+                    <h3>Project Titel</h3>
+                </div>
+                <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="project-modal" id="projectModal">
+        <span class="close-btn" id="closeBtn"></span>
+        <div class="modal-content">
+            <img id="modalMainImg" src="" alt="Grote weergave">
+            <div class="modal-info">
+                <h3 id="modalTitle">Project Titel</h3>
+                <span id="modalCategory">CATEGORIE</span>
+                <p class="modal-desc" id="modalDesc">Omschrijving van het project...</p>
+            </div>
+        </div>
+        <span class="nav-btn prev-btn" id="prevBtn">&lt;</span>
+        <span class="nav-btn next-btn" id="nextBtn">&gt;</span>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
